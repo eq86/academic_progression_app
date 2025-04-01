@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Link to Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Link to Custom CSS -->
+    <link rel="stylesheet" href="./design.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+    </header>
+
+    <!-- Login Box -->
+    <div class="login-box">
+        <!-- Title -->
+        <h1 class="title is-3">Login</h1>
+
+        <!-- Login Form -->
+        <form action="/login" method="POST">
+            <!-- Student ID Field -->
+            <div class="field">
+                <label class="label">Student ID</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" name="sId" placeholder="Enter your Student" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="password" name="password" placeholder="Enter your password" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Role Selection
+            <div class="field">
+                <label class="label">Role</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select name="role" required>
+                            <option value="" disabled selected>Select your role</option>
+                            <option value="student">Student</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Submit Button -->
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary is-fullwidth" type="submit">Login</button>
+                </div>
+            </div>
+
+            <!-- Forgot Password Link -->
+            <div class="has-text-centered">
+                <a href="#">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2025 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

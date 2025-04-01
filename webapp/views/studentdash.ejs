@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="./design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+    </header>
+
+    <div class="columns is-gapless">
+
+        <!-- Sidebar (Left) -->
+        <%- include('partials/studentsidebar') %>
+
+        <!-- Main Content Area -->
+        <div class="column">
+            <div class="section">
+                <h2 class="title is-4">Student Services</h2>
+                <div class="columns is-mobile is-multiline">
+                    <!-- Student Profile -->
+                    <div
+                        class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <a href="/studentprofile">
+                            <div class="card cardH">
+                                <div class="card-content">
+                                    <i class="material-icons">person</i>
+                                    <h3 class="title is-5">Student Profile</h3>
+                                    <div class="content is-size-6">
+                                        View and edit profile information.
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Progression Statistics -->
+                    <div
+                        class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <a href="/studentprogression">
+                            <div class="card cardH">
+                                <div class="card-content">
+                                    <i class="material-icons">bar_chart</i>
+                                    <h3 class="title is-5">Progression Statistics</h3>
+                                    <div class="content is-size-6">
+                                        View current grades and academic progression.
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Messages -->
+                    <div
+                        class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <a href="/views/studentmessages.html">
+                            <div class="card cardH">
+                                <div class="card-content">
+                                    <i class="material-icons">message</i>
+                                    <h3 class="title is-5">Messages</h3>
+                                    <div class="content is-size-6">
+                                        View messages and contact advisor of studies.
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2025 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

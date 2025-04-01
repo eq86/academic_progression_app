@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Progression</title>
+    <link rel="stylesheet" href="/design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+        <div class="column is-2 rounded home">
+            <a href="/studentdashboard"><span class="material-icons">home</span></a>
+        </div>
+    </header>
+
+    <div class="columns is-gapless">
+        <!-- Sidebar (Left) -->
+        <%- include('partials/studentsidebar') %>
+
+            <!-- Main Content -->
+            <section class="section">
+
+                
+
+                    <h1 class="title is-1">Student Progression</h1>
+
+                    <!-- L1 Module Grades Section -->
+                    <div class="box">
+                        <h2 class="title is-4">Level 1 Module Grades</h2>
+                        <% if (progress && progress.level1Modules && progress.level1Modules.length > 0) { %>
+                            <ul>
+                                <% progress.level1Modules.forEach(module => { %>
+                                    <li>
+                                        <%= module.moduleTitle %> (<%= module.acad_Yr %>): 
+                                        <strong>
+                                            <%= module.resitGrade !== '' ? module.resitGrade : module.firstGrade || 'N/A' %>% 
+                                            (<%= module.resitResult || module.gradeResult || 'Pending' %>)
+                                        </strong>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        <% } else { %>
+                            <p>No Level 1 modules completed yet.</p>
+                        <% } %>
+                    </div>
+
+                    <!-- L2 Module Grades Section -->
+                    <div class="box">
+                        <h2 class="title is-4"><%= student.pathway %> Level 2 Module Grades</h2>
+                        <% if (progress && progress.level2Modules && progress.level2Modules.length > 0) { %>
+                            <ul>
+                                <% progress.level2Modules.forEach(module => { %>
+                                    <li>
+                                        <%= module.moduleTitle %> (<%= module.acad_Yr %>): 
+                                        <strong>
+                                            <%= module.resitGrade !== '' ? module.resitGrade : module.firstGrade || 'N/A' %>% 
+                                            (<%= module.resitResult || module.gradeResult || 'Pending' %>)
+                                        </strong>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        <% } else { %>
+                            <p>No Level 2 modules completed yet.</p>
+                        <% } %>
+                    </div>
+
+                    <!-- Progression Decision Section -->
+                    <div class="box">
+                        <h2 class="title is-4">Progression Decision</h2>
+                        <p>Your progression status based on <%= progress.currentLevel %> performance:</p>
+                        <% if (progress && progress.decision) { %>
+                            <p class="has-text-weight-bold <%= progress.decision.includes('Progress') ? 'has-text-success' : 'has-text-danger' %>">
+                                <%= progress.decision.includes('Progress') ? '✅' : '⚠' %> <%= progress.decision %>
+                            </p>
+                            <% if (progress.levelModules.some(m => m.resitResult === 'fail' || m.resitResult === 'excused' || m.resitResult === 'absent')) { %>
+                                <p class="has-text-danger">⚠ Note: A resit is required for one or more modules.</p>
+                            <% } %>
+                        <% } else { %>
+                            <p>No decision available yet.</p>
+                        <% } %>
+                    </div>
+
+                    <!-- Summary of Progression Criteria -->
+                    <div class="box">
+                        <h2 class="title is-4">Progression Criteria Summary</h2>
+                        <p>Your progression summary based on <%= progress.currentLevel %> performance:</p>
+                        <% if (progress) { %>
+                            <ul>
+                                <li><strong>Total Credits Earned:</strong> <%= progress.creditsEarned %> / <%= progress.totalCreditsRequired %> required</li>
+                                <li><strong>Average Grade:</strong> <%= progress.avgGrade.toFixed(2) %>% (Minimum Required: 40%)</li>
+                                <li><strong>Modules Passed:</strong> <%= progress.modulesPassed %> / <%= progress.levelModules.length %></li>
+                            </ul>
+                            <p>Your current academic standing <%= progress.creditsEarned >= 100 && progress.avgGrade >= 40 ? 'meets criteria' : 'does not fully meet criteria' %><%= progress.modulesFailed > 0 ? ', a resit may be required.' : '.' %></p>
+                        <% } else { %>
+                            <p>No summary available yet.</p>
+                        <% } %>
+                    </div>
+            
+        </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer has-background-light">
+        <div class="content has-text-centered">
+            <p>&copy; 2023 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

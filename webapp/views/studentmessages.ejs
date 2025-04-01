@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Messages</title>
+    <link rel="stylesheet" href="/assets/design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .hidden { display: none; }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+        <div class="column is-2 rounded home">
+            <a href="/views/studentdash.html"><span class="material-icons">home</span></a>
+        </div>
+    </header>
+
+    <div class="column">
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        
+                        <!-- Tabs -->
+                        <div class="tabs is-boxed">
+                            <ul>
+                                <li class="is-active" id="send-tab"><a>Send Message</a></li>
+                                <li id="read-tab"><a>Read Messages</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Send Message Form -->
+                        <div id="send-message">
+                            <form action="/contact.html" method="post" id="contactForm">
+                                <div class="field">
+                                    <p class="control has-icons-left has-icons-right">
+                                        <input class="input" type="text" placeholder="Name"> 
+                                        <span class="icon is-small is-left">
+                                            <span class="material-icons">assignment_ind</span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control has-icons-left has-icons-right">
+                                        <input class="input" type="email" placeholder="Email" id="emailForm"> 
+                                        <span class="icon is-small is-left">
+                                            <span class="material-icons">email</span>
+                                        </span>
+                                    </p>
+                                    <p class="help is-danger" id="emailFormFB"></p>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" type="text" id="subjectForm" placeholder="e.g. Subject Heading">
+                                    </div>
+                                    <p class="help is-danger" id="subjectFormFB"></p>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="submit" value="Send Message" class="button is-primary is-fullwidth">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Read Messages Section (Hidden Initially) -->
+                        <div id="read-messages" class="hidden">
+                            <div class="box">
+                                <h3 class="title is-5">Inbox</h3>
+                                <div class="message-list">
+                                    <article class="message is-info">
+                                        <div class="message-header">
+                                            <p>Professor Smith</p>
+                                        </div>
+                                        <div class="message-body">
+                                            "Your grades have been updated. Check the portal for details."
+                                        </div>
+                                    </article>
+                                    <article class="message is-success">
+                                        <div class="message-header">
+                                            <p>Admin</p>
+                                        </div>
+                                        <div class="message-body">
+                                            "Reminder: Registration for next semester closes soon."
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2023 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Tab Switching -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sendTab = document.getElementById("send-tab");
+            const readTab = document.getElementById("read-tab");
+            const sendMessage = document.getElementById("send-message");
+            const readMessages = document.getElementById("read-messages");
+
+            sendTab.addEventListener("click", function () {
+                sendTab.classList.add("is-active");
+                readTab.classList.remove("is-active");
+                sendMessage.classList.remove("hidden");
+                readMessages.classList.add("hidden");
+            });
+
+            readTab.addEventListener("click", function () {
+                readTab.classList.add("is-active");
+                sendTab.classList.remove("is-active");
+                readMessages.classList.remove("hidden");
+                sendMessage.classList.add("hidden");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

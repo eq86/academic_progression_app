@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="/design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+
+        <div class="home-icon">
+            <a href="/admindashboard" class="button is-white">
+                <span class="material-icons">home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="columns is-gapless">
+        <!-- Sidebar (Left) -->
+        <%- include('partials/adminsidebar') %>
+
+        <!-- Main Content Area -->
+        <div class="column">
+            <div class="section">
+                <h2 class="title is-4">Student Management</h2>
+
+                <!-- Add Student Button -->
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary is-fullwidth" id="addStudentBtn">
+                            <span class="icon">
+                                <i class="material-icons">add</i>
+                            </span>
+                            <span>Add Student</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Student Records Table -->
+                <div class="box">
+                    <h3 class="title is-5">Student Records</h3>
+
+                    <% if(students.length === 0) { %>
+                        <p>No students found.</p>
+                    <% } else { %>
+                            <table class="table is-fullwidth is-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Student Number</th>
+                                        <th>Pathway</th>
+                                        <th>Year of Study</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                    <tbody>
+                                        <% students.forEach(student => { %>
+                                            <tr>
+                                                <td><%= student.firstName %> <%= student.lastName %></td>
+                                                <td><%= student.sId %></td>
+                                                <td><%= student.pathway %></td>
+                                                <td><%= student.entryLevel || 'Not Enrolled' %></td>
+                                                <td>
+                                                    <button class="button is-small is-info">
+                                                        <span class="icon">
+                                                            <i class="material-icons">edit</i>
+                                                        </span>
+                                                    </button>
+                                                    <button class="button is-small is-danger">
+                                                        <span class="icon">
+                                                            <i class="material-icons">delete</i>
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <% }) %>                               
+                                    </tbody>
+                            </table>
+
+                            <!-- Pagination Controls -->
+                            <nav class="pagination" role="navigation" aria-label="pagination">
+                                <a href="/studentmgmt?page=<%= currentPage - 1 %>" 
+                                class="pagination-previous <%= currentPage === 1 ? 'is-disabled' : '' %>">
+                                    Previous
+                                </a>
+                                <a href="/studentmgmt?page=<%= currentPage + 1 %>" 
+                                class="pagination-next <%= currentPage === totalPages ? 'is-disabled' : '' %>">
+                                    Next
+                                </a>
+                                <p class="pagination-info">
+                                    Page <%= currentPage %> of <%= totalPages %> 
+                                    (Showing <%= students.length %> of <%= totalStudents %> students)
+                                </p>
+                            </nav>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2023 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add Student Modal -->
+    <div class="modal" id="addStudentModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Add Student</p>
+                <button class="delete" aria-label="close" id="closeModalBtn"></button>
+            </header>
+            <section class="modal-card-body">
+                <!-- Add Student Form -->
+                <form id="addStudentForm">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Enter student name" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Student Number</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Enter student number" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Pathway</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Enter pathway" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Year of Study</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Enter year of study" required>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary" id="saveStudentBtn">Save</button>
+                <button class="button" id="cancelStudentBtn">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        // Open Modal
+        document.getElementById('addStudentBtn').addEventListener('click', () => {
+            document.getElementById('addStudentModal').classList.add('is-active');
+        });
+
+        // Close Modal
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('addStudentModal').classList.remove('is-active');
+        });
+
+        document.getElementById('cancelStudentBtn').addEventListener('click', () => {
+            document.getElementById('addStudentModal').classList.remove('is-active');
+        });
+
+        // Save Student (Example Functionality)
+        document.getElementById('saveStudentBtn').addEventListener('click', () => {
+            alert('Student added successfully!');
+            document.getElementById('addStudentModal').classList.remove('is-active');
+        });
+    </script>
+</body>
+
+</html>

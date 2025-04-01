@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+    </header>
+
+    <div class="columns is-gapless">
+        <!-- Sidebar (Left) -->
+        <%- include('partials/adminsidebar') %>
+
+        <!-- Main Content Area -->
+        <div class="column">
+            <div class="section">
+                <h2 class="title is-4">Administrator Services</h2>
+                <div class="columns is-mobile is-multiline">
+                    <!-- Student Management -->
+                    <div class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <a href="/studentmgmt">
+                            <div class="card cardH">
+                                <div class="card-content">
+                                    <i class="material-icons">person</i>
+                                    <h3 class="title is-5">Student Management</h3>
+                                    <div class="content is-size-6">
+                                        View and maintain student records.
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Module Management -->
+                    <div class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <div class="card cardH">
+                            <div class="card-content">
+                                <i class="material-icons">library_books</i>
+                                <h3 class="title is-5">Module Management</h3>
+                                <div class="content is-size-6">
+                                    Store module information.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Management -->
+                    <div class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <div class="card cardH">
+                            <div class="card-content">
+                                <i class="material-icons">grading</i>
+                                <h3 class="title is-5">Grade Management</h3>
+                                <div class="content is-size-6">
+                                    View, input, and update student grade data.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grade Progression -->
+                    <div class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <div class="card cardH">
+                            <div class="card-content">
+                                <i class="material-icons">bar_chart</i>
+                                <h3 class="title is-5">Grade Progression</h3>
+                                <div class="content is-size-6">
+                                    View reports and analytics on student progression decisions.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages -->
+                    <div class="column is-flex is-justify-content-center is-align-items-center is-one-quarter-tablet is-half-mobile">
+                        <div class="card cardH">
+                            <div class="card-content">
+                                <i class="material-icons">message</i>
+                                <h3 class="title is-5">Messages</h3>
+                                <div class="content is-size-6">
+                                    Send messages and notifications to students.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2025 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<!-- Sidebar (Left) -->
+<aside class="column is-one-quarter-tablet sidebar">
+    <div class="box">
+        <h3 class="title is-4">Admin Info</h3>
+        <div class="has-text-centered">
+            <figure class="image is-128x128" style="margin: 0 auto;">
+                <img src="<%= admin.profilePic || '/profilepic.png'%> " alt="Profile Image" class="is-rounded">
+            </figure>
+        </div>
+        <p><strong>Name:</strong> <%= admin.firstName %> <%= admin.lastName %></p>
+        <p><strong>Student ID:</strong> <%= admin.sId %></p>
+        <p><strong>Email:</strong> <%= admin.email %></p>
+        <a href="/logout">
+            <button class="button is-primary is-fullwidth mt-3">Logout</button>
+        </a>
+    </div>
+</aside>

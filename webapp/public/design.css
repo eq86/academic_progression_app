@@ -1,0 +1,142 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+/* General Styles */
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(to right, #00d1b2, white);
+    color: black; 
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Login Box */
+.login-box {
+    max-width: 400px; /* Maximum width for the box */
+    width: 100%; /* Box will take full width within max-width */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute; /* Positioning the login box */
+    top: 50%; /* Moves the box to the middle vertically */
+    left: 50%; /* Moves the box to the middle horizontally */
+    transform: translate(-50%, -50%); /* Adjusts to ensure it's truly centered */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+/*Admin dashboard css*/
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #f5f5f5;
+    padding: 20px;
+    min-height: 100vh; /* Full height sidebar */
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 30%; /* Fixed width for sidebar */
+    max-width: 300px;
+    flex-shrink: 0;
+    
+}
+
+.sidebar .box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure the box takes full width */
+    max-width: 300px; /* Limit the width of the box */
+    margin-right: auto;
+    text-align: left;
+}
+
+/* Ensure columns adjust properly */
+.columns.is-gapless .column:not(.sidebar) {
+    flex-grow: 1;
+}
+
+.columns.is-gapless {
+    display: flex;
+}
+
+.columns.is-gapless .sidebar {
+    flex: 0 0 30%;
+    max-width: 300px;
+}
+
+.columns.is-gapless .section {
+    flex-grow: 1; 
+}
+
+
+.services-title {
+    margin-bottom: 20px;
+}
+
+
+/* Grid Layout for Cards */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers cards */
+    gap: 100px; /* Spacing between cards */
+}
+
+/* Each Card */
+.cardH {
+    min-width: 200px; /* Prevents cards from becoming too small */
+    height: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.cardH:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+/* Responsive for Smaller Screens */
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width on small screens */
+        max-width: none; /* Removes max-width restriction */
+        padding: 15px;
+    }
+
+    .sidebar .box {
+        width: 100%; /* Ensures box takes full width */
+        min-width: 250px; /* Prevents it from getting too small */
+        max-width: 400px; /* Keeps it readable */
+        margin: 0 auto; /* Centers the box */
+    }
+}
+
+
+
+

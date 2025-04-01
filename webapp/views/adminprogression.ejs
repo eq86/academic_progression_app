@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progression Decisions</title>
+    <link rel="stylesheet" href="/assets/design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+
+        <div class="home-icon">
+            <a href="/views/admindash.html" class="button is-white">
+                <span class="material-icons">home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="columns is-gapless">
+        <!-- Sidebar (Left) -->
+        <aside class="column is-one-quarter-tablet sidebar">
+            <div class="box sidebar-content">
+                <h3 class="title is-4">Admin Info</h3>
+                <p><strong>Name:</strong> Admin User</p>
+                <p><strong>Role:</strong> Administrator</p>
+                <p><strong>Email:</strong> admin@gradewiz.com</p>
+                <button class="button is-primary is-fullwidth mt-3">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="column">
+            <div class="section">
+                <h2 class="title is-4">Automate Progression Decisions</h2>
+
+                <!-- Progression Calculation -->
+                <div class="box">
+                    <h3 class="title is-5">Progression Calculation</h3>
+                    <div class="content">
+                        <p>Automatically calculate the average grade and total credits for students.</p>
+                        <button class="button is-primary" id="calculateProgressionBtn">
+                            <span class="icon">
+                                <i class="material-icons">calculate</i>
+                            </span>
+                            <span>Calculate Progression</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progression Decisions -->
+                <div class="box">
+                    <h3 class="title is-5">Progression Decisions</h3>
+                    <div class="content">
+                        <p>Generate progression decisions for all students (e.g., "Progress to Year 2", "Resit Required").</p>
+                        <button class="button is-primary" id="generateProgressionBtn">
+                            <span class="icon">
+                                <i class="material-icons">assignment</i>
+                            </span>
+                            <span>Generate Decisions</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- View & Adjust Results -->
+                <div class="box">
+                    <h3 class="title is-5">View and Adjust Results</h3>
+                    <div class="content">
+                        <p>Review individual progression decisions and adjust them if necessary (e.g., applying mitigation).</p>
+                        <button class="button is-primary" id="viewAdjustResultsBtn">
+                            <span class="icon">
+                                <i class="material-icons">visibility</i>
+                            </span>
+                            <span>View & Adjust Results</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Reports & Analytics -->
+                <div class="box">
+                    <h3 class="title is-5">Reports and Analytics</h3>
+                    <div class="content">
+                        <p>Generate reports to view individual student summaries, performance trends, and analytics.</p>
+                        <button class="button is-primary" id="generateReportsBtn">
+                            <span class="icon">
+                                <i class="material-icons">bar_chart</i>
+                            </span>
+                            <span>Generate Reports</span>
+                        </button>
+                    </div>
+
+                    <!-- Report Options -->
+                    <div class="columns is-multiline mt-4">
+                        <div class="column is-one-third">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Student Summary</h4>
+                                    <p>View an individual student summary including their grades, credits, and progression status.</p>
+                                    <button class="button is-info is-fullwidth">View Summary</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-one-third">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Performance Trends</h4>
+                                    <p>View performance trends for individual students (e.g., grade improvements, average over time).</p>
+                                    <button class="button is-info is-fullwidth">View Trends</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-one-third">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Progression Rates</h4>
+                                    <p>View progression rates by pathway, module, etc. Analyze how students are progressing across the system.</p>
+                                    <button class="button is-info is-fullwidth">View Rates</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns is-multiline mt-4">
+                        <div class="column is-half">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Failed Modules</h4>
+                                    <p>See a list of failed modules and resit statistics for students.</p>
+                                    <button class="button is-info is-fullwidth">View Failed Modules</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="title is-5">Resit Statistics</h4>
+                                    <p>View resit statistics to identify students needing to retake exams.</p>
+                                    <button class="button is-info is-fullwidth">View Resits</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2023 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Modals and Button Actions -->
+    <script>
+        // Simulate the action of calculating progression, generating decisions, etc.
+        document.getElementById('calculateProgressionBtn').addEventListener('click', () => {
+            alert('Progression calculation initiated!');
+        });
+
+        document.getElementById('generateProgressionBtn').addEventListener('click', () => {
+            alert('Progression decisions generated!');
+        });
+
+        document.getElementById('viewAdjustResultsBtn').addEventListener('click', () => {
+            alert('Viewing and adjusting results...');
+        });
+
+        document.getElementById('generateReportsBtn').addEventListener('click', () => {
+            alert('Reports and Analytics generated!');
+        });
+    </script>
+</body>
+
+</html>

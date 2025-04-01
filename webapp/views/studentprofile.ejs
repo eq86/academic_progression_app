@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Personal Profile</title>
+    <link rel="stylesheet" href="/design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title is-3 has-text-weight-bold">GradeWiz</h1>
+        </div>
+        <div class="column is-2 rounded home">
+            <a href="/studentdashboard"><span class="material-icons">home</span></a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="columns is-gapless">
+        <!-- Sidebar (Left) -->
+        <%- include('partials/studentsidebar') %>
+
+            <!-- Main Content Area -->
+            <div class="column">
+                <div class="section">
+                    <h2 class="title is-4">Personal Profile</h2>
+                    <div class="box">
+
+                        <!-- Notification -->
+                        <% if (success) { %>
+                            <div class="notification is-success" id="success-notification">
+                                <button class="delete" onclick="document.getElementById('success-notification').style.display='none'"></button>
+                                <%= success %>
+                            </div>
+                        <% } %>
+
+                        <!-- Profile Image -->
+                        <div class="has-text-centered">
+                            <figure class="image is-128x128" style="margin: 0 auto;">
+                                <img src="<%= student.profilePic || '/profilepic.png'%> " alt="Profile Image" class="is-rounded">
+                            </figure>
+                        </div>
+
+                        <!-- Profile Information -->
+                        <div class="content">
+                            <div class="field">
+                                <label class="label">Name</label>
+                                <div class="control">
+                                    <p><%= student.firstName %> <%= student.lastName %></p>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Student ID</label>
+                                <div class="control">
+                                    <p><%= student.sId %></p>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Pathway</label>
+                                <div class="control">
+                                    <p><%= student.pathway %></p>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Level of Study</label>
+                                <div class="control">
+                                    <p><%= student.entryLevel %></p>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <p><%= student.email %></p>
+                                </div>
+                            </div>
+
+                            <!-- Display/adding secondary email + profile pic -->
+                             <h3 class="title is-5 mt-4" >Update Information</h3>
+                            <form action="/studentprofile/update" method="POST">
+                                <div class="field">
+                                    <label class="label">Secondary Email</label>
+                                    <div class="control">
+                                        <input class="input" type="email" name="secondaryEmail"
+                                            value="<%= student.secondaryEmail %>" placeholder="Enter secondary email">
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">Profile Picture URL</label>
+                                    <div class="control">
+                                        <input class="input" type="url" name="profilePic" value="<%= student.profilePic || '' %>"
+                                            placeholder="Enter URL of profile picture">
+                                    </div>
+                                </div>
+
+                                <!-- Save Profile Button -->
+                                <div class="field">
+                                    <div class="control">
+                                        <button type="submit" class="button is-primary is-fullwidth">Save Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2023 Quinn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Hide notification after 3 seconds -->
+    <% if (success) { %>
+        <script>
+            setTimeout(() => {
+                document.getElementById('success-notification').style.display = 'none';
+            }, 3000);
+        </script>
+    <% } %>
+    
+</body>
+
+</html>
